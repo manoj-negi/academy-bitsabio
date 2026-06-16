@@ -37,8 +37,8 @@ class PostsTable
                 ->limit(40),
                 
                 ImageColumn::make('image')
-                    ->disk('s3'),
-                    // ->visibility('public'),
+                    ->disk('public')
+                    ->visibility('public'),
 
                 TextColumn::make('status')
                     ->badge()

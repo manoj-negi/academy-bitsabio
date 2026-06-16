@@ -9,6 +9,7 @@
 @section('content')
 
     <!-- ========== HERO SECTION ========== -->
+    @foreach($course->curriculum_hero ?? [] as $hero)
     <section class="page-hero">
         <div class="container">
             <div class="row align-items-center">
@@ -17,29 +18,30 @@
                         <i class="bi bi-circle-fill" style="color: var(--gradient-blue); font-size: 7px;"></i>
                         <span>Professional Certification</span>
                     </div>
-                    <h1 data-aos="fade-up">AI Insights & <span class="color-liner-004ED0">Engineering Guides</span> </h1>
+                    <h1 data-aos="fade-up"> {{ $hero['title'] }}</h1>
+                    
                     <p data-aos="fade-up" data-aos-delay="100">
-                        Practical AI knowledge, implementation strategies, and real-world case studies
-
+                        {{ $hero['description'] }}
                     </p>
 
                 </div>
                 <div class="col-md-5">
-                    <div class="">
-                        <img class="rounded" src="./images/data-science.jpg" alt="service-hero-img">
+                    <div class="contact-hero-img">
+                        <img class="rounded" src="{{ url('/public/storage/' . $hero['curriculum-hero_image']) }}" alt="{{ $hero['title'] }}">
                     </div>
                 </div>
                       <div class="d-flex align-items-center">
                     <a href="" class="btn btn-gradient btn-lg me-3" data-aos="fade-up" data-aos-delay="200">
                         Enroll Now
                     </a>
-                   <a href="#work" class="btn btn-glass text-primary">Download Brochure <i class="bi bi-download text-primary"></i></a>
+                   <a href="#work" class="btn btn-glass text-primary">Download PDF  <i class="bi bi-download text-primary"></i></a>
                     </div>
             </div>
         </div>
     </section>
+    @endforeach
         <!-- Why Choose Us -->
-    <section class="py-5"  style="background-color: var(--color-surface);">
+    {{-- <section class="py-5"  style="background-color: var(--color-surface);">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-9">
@@ -105,7 +107,6 @@
 
                 </div>
                 <div class="col-md-3">
-                    {{-- <img src="./images/trans03.png" alt="trans03"> --}}
                     @include('components.courseForm')
                      
                 </div>
@@ -113,10 +114,47 @@
 
             
         </div>
-    </section>
+    </section> --}}
+
+  <section class="py-5" style="background-color: var(--color-surface);">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-9">
+                <h2 class="mb-4" data-aos="fade-up">
+                    Interactive Roadmap
+                </h2>
+                @foreach($course->interactive_roadmap ?? [] as $index => $roadmap)
+                    <div class="h-100">
+                        <div class="innovators-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="icon">
+                                {{-- <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10">
+                                    </circle>
+                                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                                </svg> --}}
+                                <i class="{{ $roadmap['icon'] }}"></i>
+                            </div>
+                            <div>
+                                <h5>
+                                    {{ $roadmap['title'] }}
+                                </h5>
+                                <p>
+                                    {{ $roadmap['description'] }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="col-md-3">
+                @include('components.courseForm')
+            </div>
+        </div>
+    </div>
+</section>
 
 {{-- Curriculum Breakdown --}}
-<section class="page-hero" id="">
+{{-- <section class="page-hero" id="">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -366,8 +404,51 @@
             </div>
         </div>
     </div>
+</section> --}}
+<section class="page-hero">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h3 class="text-center mb-3" data-aos="fade-up">
+                    Curriculum Breakdown
+                </h3>
+                <div class="container py-5">
+                    <div class="accordion custom-accordion" id="faqAccordion">
+                        @foreach($course->curriculum_preview ?? [] as $index => $module)
+                            <div class="accordion-item mb-3">
+                                <h3 class="accordion-header">
+                                    <button
+                                        class="accordion-button {{ $index > 0 ? 'collapsed' : '' }}"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#faq{{ $index }}">
+                                        <div>
+                                            <small class="text-primary d-block">
+                                                MODULE {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+                                            </small>
+                                            {{ $module['title'] ?? '' }}
+                                        </div>
+                                    </button>
+                                </h3>
+                                <div
+                                    id="faq{{ $index }}"
+                                    class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}"
+                                    data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        {!! $module['description'] ?? '' !!}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-    <section class="py-5">
+
+{{-- Industry Projects --}}
+    {{-- <section class="py-5">
         <div class="container">
                     <h2 class="mb-5">
             Industry Projects
@@ -436,8 +517,41 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-5">
+            Industry Projects
+        </h2>
+        <div class="blog-grid">
+            @foreach($course->industry_projects ?? [] as $index => $project)
+                <div
+                    class="blog-card"
+                    data-aos="fade-up"
+                    data-aos-delay="{{ ($index + 1) * 100 }}">
+                    <div class="blog-card-image">
+                        <img
+                            src="{{ url('/public/storage/' . $project['industry_projects_image']) }}"
+                            alt="{{ $project['title'] }}">
+                    </div>
+                    <div class="blog-card-content">
+                        <span class="blog-category">
+                            {{ implode(', ', $project['tags'] ?? []) }}
+                        </span>
+                        <h3>
+                            {{ $project['title'] }}
+                        </h3>
+                        <p>
+                            {{ $project['description'] }}
+                        </p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>  
 
+{{-- Global Career Outcomes --}}
 
     <section class="py-5"  style="background-color: var(--color-surface);">
         <div class="container">
@@ -451,19 +565,19 @@
             <div class="service-grid">
                 <div class="service-card-compact" data-aos="fade-up" data-aos-delay="100">
                     <h3>Practical Learning</h3>
-                     <p class="color-liner-004ED0 fw-bold">Avg. Salary: $145k</p>
+                     <p class="color-liner-004ED0 fw-bold">Avg. Salary:{{ $course->average_salary['practical_learning'] ?? '' }}</p>
                         <p>Learn through hands-on coding, live projects, case studies, and real-world implementation rather than just theory.</p>
                 </div>
                 
                 <div class="service-card-compact" data-aos="fade-up" data-aos-delay="200">
                     <h3>Expert Mentorship</h3>
-                     <p class="color-liner-004ED0 fw-bold">Avg. Salary: $145k</p>
+                     <p class="color-liner-004ED0 fw-bold">Avg. Salary: {{ $course->average_salary['expert_mentorship'] ?? '' }}</p>
                     <p>Get guidance from experienced industry professionals who help you learn the latest technologies and best practices.</p>
                 </div>
                 
                 <div class="service-card-compact" data-aos="fade-up" data-aos-delay="300">
                     <h3>Job-Oriented Training</h3>
-                     <p class="color-liner-004ED0 fw-bold">Avg. Salary: $145k</p>
+                     <p class="color-liner-004ED0 fw-bold">Avg. Salary: {{ $course->average_salary['expert_mentorship'] ?? '' }}</p>
                     <p>Our curriculum is designed according to current industry requirements to make students job-ready.</p>
                 </div>
              </div>
@@ -485,8 +599,8 @@
                         </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
-                  <img class="rounded"  src="./images/certificate.png" alt="certificate">
-
+                  {{-- <img class="rounded"  src="./images/certificate.png" alt="certificate"> --}}
+                  <img class="rounded" src="{{ asset('images/certificate.png') }}" alt="certificate">
             </div>
         </div>
     </section>

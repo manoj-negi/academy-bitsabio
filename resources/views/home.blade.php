@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('meta_title', 'BitSabio - Courses')
+@section('meta_title', 'BitSabio - Home')
 
 @section('meta_description', 'Learn web development, AI technologies, design, and digital skills through practical courses and industry-focused training programs.')
 @section('meta_keywords', 'web development courses, AI courses, programming training, digital skills')
@@ -316,135 +316,14 @@
                 @endforeach
 
             </div>
+            <div class="text-center mt-5">
+                <a href="{{ route('courses') }}" class="btn btn-primary">
+                    View All Courses
+                </a>
+            </div>
         </div>
     </section>
-
-    {{-- Why Choose us  --}}
- {{-- <section class="py-5">
-    <div class="container">
-
-        <div class="text-center mb-5">
-            <h3 data-aos="fade-up">Why Choose Bitsabio?</h3>
-
-            <p class="section-subtitle"
-               data-aos="fade-up"
-               data-aos-delay="100">
-                We don't just teach theory; we provide a complete learning
-                ecosystem that prepares you for real-world careers.
-            </p>
-        </div>
-
-        <div class="problem-grid">
-
-            <!-- Expert Trainers -->
-            <div class="problem-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="icon" style="background: var(--gradient-light);">
-                    <i class="bi bi-mortarboard"></i>
-                </div>
-
-                <h4>Expert Trainers</h4>
-
-                <p>
-                    Learn directly from experienced industry professionals and mentors.
-                </p>
-            </div>
-
-            <!-- Real Projects -->
-            <div class="problem-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon" style="background: var(--gradient-light);">
-                    <i class="bi bi-code-square"></i>
-                </div>
-
-                <h4>Real Projects</h4>
-
-                <p>
-                    Build portfolio-ready applications using modern technologies.
-                </p>
-            </div>
-
-            <!-- Practical Learning -->
-            <div class="problem-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="icon" style="background: var(--gradient-light);">
-                    <i class="bi bi-laptop"></i>
-                </div>
-
-                <h4>Practical Learning</h4>
-
-                <p>
-                    Hands-on coding sessions with real-world implementation.
-                </p>
-            </div>
-
-            <!-- Career Guidance -->
-            <div class="problem-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="icon" style="background: var(--gradient-light);">
-                    <i class="bi bi-signpost"></i>
-                </div>
-
-                <h4>Career Guidance</h4>
-
-                <p>
-                    Personalized career roadmaps and growth strategies.
-                </p>
-            </div>
-
-            <!-- Interview Preparation -->
-            <div class="problem-card" data-aos="fade-up" data-aos-delay="500">
-                <div class="icon" style="background: var(--gradient-light);">
-                    <i class="bi bi-chat-square-text"></i>
-                </div>
-
-                <h4>Interview Preparation</h4>
-
-                <p>
-                    Mock interviews, resume reviews, and technical preparation.
-                </p>
-            </div>
-
-            <!-- Affordable Fees -->
-            <div class="problem-card" data-aos="fade-up" data-aos-delay="600">
-                <div class="icon" style="background: var(--gradient-light);">
-                    <i class="bi bi-cash-stack"></i>
-                </div>
-
-                <h4>Affordable Fees</h4>
-
-                <p>
-                    Premium quality education at student-friendly pricing.
-                </p>
-            </div>
-
-            <!-- Certification -->
-            <div class="problem-card" data-aos="fade-up" data-aos-delay="700">
-                <div class="icon" style="background: var(--gradient-light);">
-                    <i class="bi bi-award"></i>
-                </div>
-
-                <h4>Certification</h4>
-
-                <p>
-                    Industry-recognized certificates after successful completion.
-                </p>
-            </div>
-
-            <!-- Job-Oriented Curriculum -->
-            <div class="problem-card" data-aos="fade-up" data-aos-delay="800">
-                <div class="icon" style="background: var(--gradient-light);">
-                    <i class="bi bi-briefcase"></i>
-                </div>
-
-                <h4>Job-Oriented Curriculum</h4>
-
-                <p>
-                    Training aligned with current industry hiring requirements.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-</section> --}}
-    
+   
     {{-- Your Success Path --}}
 <section class="py-5" style="background-color: var(--color-surface-light);">
     <div class="container">
@@ -503,101 +382,7 @@
     </div>
 </section>
 
-
-    <!-- ========== AI SOLUTIONS SECTION ========== -->
-    {{-- <section id="solutions" class="py-5 position-relative">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <div class="section-badge">
-                    <i class="bi bi-robot"></i>
-                    <span>WHAT YOU’LL GET</span>
-                </div>
-                <h3 class="section-title gradient-text">Everything You Need to Start Your Tech Career</h3>
-                <p class="section-subtitle">Learn practical skills, build real projects, and get guided support to grow from beginner to job-ready.</p>
-            </div>
-
-            <div class="row g-4 mb-4">
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="0">
-                    <div class="glass-card p-4 h-100">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-robot"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Learn by Building</h4>
-                        <p class="text-secondary small">Work on real projects instead of just theory.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="glass-card p-4 h-100">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-chat-square-text"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Real Project Experience</h4>
-                        <p class="text-secondary small">Build portfolio-ready apps used in real scenarios.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="glass-card p-4 h-100">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-bar-chart"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Career Guidance</h4>
-                        <p class="text-secondary small">Get direction on skills, roles, and growth path.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="glass-card p-4 h-100">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-diagram-3"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Interview & Resume Prep</h4>
-                        <p class="text-secondary small">Prepare with mock interviews and strong resumes.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center" data-aos="fade-up">
-                <a href="#contact" class="btn btn-gradient">Join Now</a>
-            </div>
-        </div>
-    </section> --}}
-
-
-
-
-    <!-- ========== PROCESS SECTION ========== -->
-    {{-- <section class="py-5 my-5" style="background: var(--bg-overlay);">
-        <div class="container">
-           
-
-          <div class="row align-items-center">
-            <div class="col-md-6">
-                <div class="mb-3" data-aos="fade-up">
-                    <h3 class="section-title gradient-text">About Bitsabio Learning</h3>
-                    <p><b>Bitsabio</b> is a fast-growing <b>IT training company</b> focused on delivering practical, job-oriented learning. We help <b>students, professionals, and businesses </b>build </b>in-demand skills</b>and stay ahead in the evolving tech industry.</p>
-                    <p>Our programs are designed with a <b>hands-on approach,</b>including <b>live projects</b> and <b>expert mentorship</b>. We aim to <b> bridge the gap between learning and industry needs,</b> helping individuals gain <b>real-world experience </b>and succeed in their careers.</p>
-                                     
-                    </ul>
-                        <li>✔ Key Highlights</li>
-                        <li>✔ Job-Oriented Training Programs</li>
-                        <li>✔ Work on Live & Real-World Projects</li>
-                        <li>✔ Skill Development with Practical Approach</li>
-                        <li>✔ Career Guidance & Interview Preparation</li>
-                        <li>✔ Affordable Courses with High Value</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-6">
-              <img class="rounded" src="./images/about-us.jpg" alt="about-home">
-            </div>
-          </div>
-        </div>
-    </section> --}}
-
-
-
+{{-- What You Will Get at Bitsabio? --}}
   <section class="py-5" style="background-color: var(--color-surface)">
         <div class="container">
             <div class="row align-items-center">
@@ -643,10 +428,4 @@
         </div>
     </div>
 </div>
-        {{-- <script>
-        document.getElementById("homeForm").addEventListener("submit", function () {
-            document.getElementById("homeBtnText").innerText = "Sending...";
-            document.getElementById("homeBtnLoader").classList.remove("d-none");
-        });
-        </script> --}}
 @endsection

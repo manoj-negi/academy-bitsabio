@@ -45,9 +45,7 @@
        <!-- ========== PROCESS SECTION ========== -->
     <section class="py-5 my-5" style="background: var(--bg-overlay);">
         <div class="container">
-           
-
-          <div class="row align-items-center">
+              <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="mb-3" data-aos="fade-up">
                     <h3 class="section-title gradient-text">About Bitsabio Learning</h3>

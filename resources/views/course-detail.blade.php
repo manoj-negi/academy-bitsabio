@@ -63,12 +63,12 @@
                     <a href="" class="btn btn-gradient btn-lg me-3" data-aos="fade-up" data-aos-delay="200">
                         Enroll Now
                     </a>
-                   <a href="#work" class="btn btn-glass text-primary">Download Brochure <i class="bi bi-download text-primary"></i></a>
+                   <a href="#work" class="btn btn-glass text-primary">Download PDF <i class="bi bi-download text-primary"></i></a>
                     </div>
 
                 </div>
                 <div class="col-md-5">
-                    <div class="">
+                    <div class="contact-hero-img">
                          <img class="rounded-3" src="{{ url('/public/storage/' . $course->hero_image) }}" alt="{{ $course->title }}">                                                                                    
                         
                     </div>
@@ -76,73 +76,29 @@
             </div>
         </div>
     </section>
+    {{-- course content section  --}}
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-start">
 
-    <section id="solutions" class="py-5 position-relative">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                {{-- <div class="section-badge">
-                    <i class="bi bi-robot"></i>
-                    <span>WHAT YOU’LL GET</span>
-                </div> --}}
-                <h3 class="section-title gradient-text">Why Learn AI & ML?</h3>
-                <p class="section-subtitle">Learn practical skills, build real projects, and get guided support to grow from beginner to job-ready.</p>
+            <div class="col-lg-9">
+                <h2 class="mb-4">
+                    Course Content
+                </h2>
+
+                {!! $course->content !!}
             </div>
 
-            <div class="row g-4 mb-4">
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="0">
-                    <div class="glass-card p-4 h-100">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-robot"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Learn by Building</h4>
-                        <p class="text-secondary small">Work on real projects instead of just theory.</p>
-                        <span class="badge bg-light text-primary">
-                        CAREER: AI ARCHITECT
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="glass-card p-4 h-100">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-chat-square-text"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Real Project Experience</h4>
-                        <p class="text-secondary small">Build portfolio-ready apps used in real scenarios.</p>
-                        <span class="badge bg-light text-primary">
-                        CAREER: ML ENGINEER
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="glass-card p-4 h-100">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-bar-chart"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Career Guidance</h4>
-                        <p class="text-secondary small">Get direction on skills, roles, and growth path.</p>
-                        <span class="badge bg-light text-primary">
-                        CAREER: ML ENGINEER
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="glass-card p-4 h-100">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-diagram-3"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Interview & Resume Prep</h4>
-                        <p class="text-secondary small">Prepare with mock interviews and strong resumes.</p>
-                        <span class="badge bg-light text-primary">
-                        CAREER: ML ENGINEER
-                        </span>
-                    </div>
-                </div>
+            <div class="col-lg-3">
+                @include('components.courseForm')
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
+    {{-- <div class="blog-detail-content">
+    {!! $blog->content !!}
+    </div> --}}
 
     <!-- ========== STATS ========== -->
     <div id="stats-section" class="info-lable">
@@ -238,108 +194,79 @@
     </div>
 
     <!-- ========== ToolS and Technology ========== -->
-    <section class="py-5 bg-light">
-        <div class="container">
+<section class="py-5 bg-light">
+    <div class="container">
 
-            <div class="text-center mb-5">
-                <h3 class="section-title gradient-text">
-                    Tools & Technologies You'll Master
-                </h3>
-            </div>
-
-            <div class="row g-4 justify-content-center">
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/excel.png') }}" alt="Excel">
-                        <h6>EXCEL</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ url('images/icons/aws (1).svg') }}" alt="SQL">
-                        <h6>SQL</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/python.png') }}" alt="Python">
-                        <h6>PYTHON</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/pandas.png') }}" alt="Pandas">
-                        <h6>PANDAS</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/numpy.png') }}" alt="NumPy">
-                        <h6>NUMPY</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/powerbi.png') }}" alt="Power BI">
-                        <h6>POWER BI</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/tableau.png') }}" alt="Tableau">
-                        <h6>TABLEAU</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/google-sheets.png') }}" alt="Google Sheets">
-                        <h6>GOOGLE SHEETS</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/mysql.png') }}" alt="MySQL">
-                        <h6>MYSQL</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/postgresql.png') }}" alt="PostgreSQL">
-                        <h6>POSTGRESQL</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/statistics.png') }}" alt="Statistics">
-                        <h6>STATISTICS</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/jupyter.png') }}" alt="Jupyter">
-                        <h6>JUPYTER</h6>
-                    </div>
-                </div>
-
-            </div>
-
+        <div class="text-center mb-5">
+            <h3 class="section-title gradient-text">
+                Tools & Technologies You'll Master
+            </h3>
         </div>
-    </section>
+        <div class="row g-4 justify-content-center">
+            @foreach($course->serviceIcons as $icon)
+                <div class="col-lg-2 col-md-3 col-6">
+                    <div class="tool-card text-center">
+                     <img src="{{ asset('public/storage/' . $icon->image) }}" alt="{{ $icon->name }}"class="img-fluid mb-2 tool-icon">
+                        <h6>
+                            {{ strtoupper($icon->name) }}
+                        </h6>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
 
     {{-- Curriculum Preview  --}}
-    <section class="page-hero" id="faq">
+<section class="page-hero">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h3 class="text-center mb-3" data-aos="fade-up">
+                    Curriculum Preview
+                </h3>
+                <div class="container py-5">
+                    <div class="accordion custom-accordion" id="faqAccordion">
+                     @foreach(collect($course->curriculum_preview)->take(4) as $index => $module)
+                            <div class="accordion-item mb-3">
+                                <h3 class="accordion-header">
+                                    <button
+                                        class="accordion-button {{ $index > 0 ? 'collapsed' : '' }}"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#faq{{ $index }}">
+                                        <div>
+                                            <small class="text-primary d-block">
+                                                MODULE {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+                                            </small>
+                                            {{ $module['title'] ?? '' }}
+                                        </div>
+                                    </button>
+                                </h3>
+                                <div
+                                    id="faq{{ $index }}"
+                                    class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}"
+                                    data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        {!! $module['description'] ?? '' !!}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                                   <div class="text-center mt-4">
+                    <a href="{{ route('course.curriculum', $course->slug) }}"
+                       class="fw-semibold text-primary text-decoration-none">
+                        View Detailed Curriculum →
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    {{-- <section class="page-hero" id="faq">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -439,9 +366,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     {{-- Projects you will Build  --}}
-    <section class="py-5">
+    {{-- <section class="py-5">
         <div class="container">
 
             <h2 class="text-center mb-5">
@@ -531,7 +458,39 @@
             </div>
 
         </div>
-    </section>
+    </section> --}}
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">
+            Projects You Will Build
+        </h2>
+        <div class="row g-4">
+            @foreach($course->projects_you_will_build ?? [] as $project)
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-card h-100 p-0 overflow-hidden">
+                     <img class="course-card-img w-100" src="{{ asset('public/storage/' . $project['Projects_image']) }}" alt="{{ $project['title'] }}">
+                        <div class="p-4">
+                            <h5>
+                                {{ $project['title'] }}
+                            </h5>
+                            <p class="small text-muted">
+                                {{ $project['description'] }}
+                            </p>
+                            <div class="d-flex gap-2 flex-wrap">
+                                @foreach($project['tags'] ?? [] as $tag)
+                                    <span class="blog-category">
+                                        {{ strtoupper($tag) }}
+                                    </span>
+                                @endforeach
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
 
     {{-- Your Success Path --}}
     <section class="py-5" style="background-color: var(--color-surface-light);">
@@ -592,58 +551,32 @@
     </section>
 
     {{-- High-Growth Career Roles --}}
-    <section class="section-contact-options py-5">
-        <div class="container">
-
-            <h2 class="text-center fw-bold mb-5">
-                High-Growth Career Roles
-            </h2>
-
-            <div class="contact-options">
-
-                <!-- Card 1 -->
-                <div class="contact-option-card" data-aos="fade-up" data-aos-delay="100">
+<section class="section-contact-options py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">
+            High-Growth Career Roles
+        </h2>
+        <div class="contact-options">
+            @foreach($course->career_roles ?? [] as $index => $role)
+                <div class="contact-option-card"
+                     data-aos="fade-up"
+                     data-aos-delay="{{ ($index + 1) * 100 }}">
                     <div class="icon-box">
-                        <i class="bi bi-cpu text-primary"></i>
+                        {{-- <i class="bi bi-cpu text-primary"></i> --}}
+                        <i class="{{ $role['icon'] ?? 'bi bi-cpu' }} text-primary"></i>
                     </div>
-
-                    <h3>AI Engineer</h3>
-
-                    <p class="mb-1">Average Global Salary</p>
-
-                    <h4 class="text-primary">$145,000+</h4>
+                    <h3>{{ $role['title'] }}</h3>
+                    <p class="mb-1">
+                        {{ $role['subtitle'] }}
+                    </p>
+                    <h4 class="text-primary">
+                        {{ $role['salary'] }}
+                    </h4>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="contact-option-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon-box">
-                        <i class="bi bi-graph-up-arrow text-primary"></i>
-                    </div>
-
-                    <h3>ML Engineer</h3>
-
-                    <p class="mb-1">Average Global Salary</p>
-
-                    <h4 class="text-primary">$138,000+</h4>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="contact-option-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="icon-box">
-                        <i class="bi bi-clipboard-data text-primary"></i>
-                    </div>
-
-                    <h3>Data Scientist</h3>
-
-                    <p class="mb-1">Average Global Salary</p>
-
-                    <h4 class="text-primary">$122,000+</h4>
-                </div>
-
-            </div>
+            @endforeach
         </div>
-    </section>
-
+    </div>
+</section>
     {{-- Google review form  --}}
     @include('components.google-reviews')
 

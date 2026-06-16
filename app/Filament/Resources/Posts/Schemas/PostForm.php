@@ -11,6 +11,10 @@ use Filament\Forms\Components\RichEditor;
 use Illuminate\Support\Str;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\TagsInput;
+use Filament\Schemas\Components\Section;
+use Filament\Widgets\StatsOverviewWidget\Stat;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class PostForm
@@ -80,7 +84,7 @@ class PostForm
                         'Advanced' => 'Advanced',
                     ])
                         ->visible(fn (Get $get): bool => $get('type') === 'course'),
-            
+           
             // course hero section
 
                 TextInput::make('hero_title_black')
@@ -97,45 +101,101 @@ class PostForm
                         ->visible(fn (Get $get) =>
                         in_array($get('type'), ['course','service'])
                     ),
+                Select::make('serviceIcons')
+                    ->relationship(
+                        name: 'serviceIcons',
+                        titleAttribute: 'name'
+                    )
+                    ->multiple()
+                    ->searchable()
+                    ->preload()
+                    ->label('Service Icons')
+                    ->visible(fn (Get $get): bool => $get('type') === 'course'),
 
                 FileUpload::make('hero_image')
-                        ->image()
-                        ->disk('s3')
-                        ->directory('posts')
-                        ->visibility('public')  
-                        ->maxSize(5120)
-                        ->imageEditor(false)
-                        ->preserveFilenames(false)
-                        ->getUploadedFileNameForStorageUsing(
-                        fn (TemporaryUploadedFile $file): string =>
-                                time() . '-' .
-                                Str::slug(pathinfo(
-                                    $file->getClientOriginalName(),
-                                    PATHINFO_FILENAME
-                                )) . '.' .
-                                $file->getClientOriginalExtension()
-                        ),
-            //   blog
+                    ->image()
+                    ->disk('public')
+                    ->visibility('public')
+                    ->nullable()
+                    ->maxSize(5120)
+                    ->visible(fn (Get $get) => in_array($get('type'), ['course','service']))
+                    ->imageEditor(false)
 
-                TextInput::make('category')
-                        ->visible(fn (Get $get) => $get('type') === 'blog'),
+                    ->getUploadedFileNameForStorageUsing(
+                        function (TemporaryUploadedFile $file): string {
+                            $name = pathinfo(
+                                $file->getClientOriginalName(),
+                                PATHINFO_FILENAME
+                            );
+                            $name = Str::slug($name);
+                            $extension = $file->getClientOriginalExtension();
+                            return time() . '-' . $name . '.' . $extension;
+                        }
+                    )
+                    ->getUploadedFileUsing(
+                            function ($file): ?array {
+
+                                if (! $file) {
+                                    return null;
+                                }
+
+                                return [
+                                    'name' => $file,
+
+                                    'size' => filesize(
+                                        storage_path('app/public/' . $file)
+                                    ),
+
+                                    'type' => mime_content_type(
+                                        storage_path('app/public/' . $file)
+                                    ),
+
+                                     'url' => url('/public/storage/' . $file),
+                                ];
+                            }
+                    ),
+            //   blog
 
                 FileUpload::make('image')
                         ->image()
-                        ->disk('s3')
-                        ->directory('posts')
-                        ->visibility('public')  
+                        ->disk('public')
+                        ->visibility('public')
+                        ->nullable()
                         ->maxSize(5120)
                         ->imageEditor(false)
-                        ->preserveFilenames(false)
+
                         ->getUploadedFileNameForStorageUsing(
-                        fn (TemporaryUploadedFile $file): string =>
-                                time() . '-' .
-                                Str::slug(pathinfo(
+                            function (TemporaryUploadedFile $file): string {
+                                $name = pathinfo(
                                     $file->getClientOriginalName(),
                                     PATHINFO_FILENAME
-                                )) . '.' .
-                                $file->getClientOriginalExtension()
+                                );
+                                $name = Str::slug($name);
+                                $extension = $file->getClientOriginalExtension();
+                                return time() . '-' . $name . '.' . $extension;
+                            }
+                        )
+                        ->getUploadedFileUsing(
+                                function ($file): ?array {
+
+                                    if (! $file) {
+                                        return null;
+                                    }
+
+                                    return [
+                                        'name' => $file,
+
+                                        'size' => filesize(
+                                            storage_path('app/public/' . $file)
+                                        ),
+
+                                        'type' => mime_content_type(
+                                            storage_path('app/public/' . $file)
+                                        ),
+
+                                        'url' => url('/public/storage/' . $file),
+                                    ];
+                                }
                         ),
 
                 TextInput::make('author')
@@ -197,12 +257,325 @@ class PostForm
                             'article' => 'Article',
                             'website' => 'Website',
                             ]),
-                
+                TextInput::make('average_salary.practical_learning')
+                    ->label('Practical Learning Salary')
+                    ->placeholder('$130K'),
+
+                TextInput::make('average_salary.expert_mentorship')
+                    ->label('Expert Mentorship Salary')
+                    ->placeholder('$145K'),
+
+                TextInput::make('average_salary.job_oriented_training')
+                    ->label('Job Oriented Training Salary')
+                    ->placeholder('$150K'),
+                        
                 Textarea::make('content')
                         ->rows(5)
                         ->columnSpanFull(),
-                        
-            ]);
+
+                Section::make('Curriculum Preview')
+                ->schema([
+
+                Repeater::make('curriculum_preview')
+                        ->label('Modules')
+                        ->schema([
+
+                            TextInput::make('title')
+                                ->label('Module Title')
+                                ->required(),
+                                
+
+                            Textarea::make('description')
+                                ->label('Module Description')
+                                ->required(),
+
+                        ])
+                        ->collapsible()
+                        ->cloneable()
+                        ->reorderable()
+                        ->addActionLabel('Add Module')
+                        ->columnSpanFull(),
+
+                ])
+                   ->columnSpanFull()
+                    ->visible(fn (Get $get): bool => $get('type') === 'course'),
+
+                Section::make('Projects You Will Build')
+                ->schema([
+
+                    Repeater::make('projects_you_will_build')
+                        ->label('Projects')
+                        ->schema([
+
+
+                                    // FileUpload::make('image')
+                                    //     ->image()
+                                    //     ->directory('industry-projects'),
+
+                    FileUpload::make('Projects_image')
+                    ->image()
+                    ->disk('public')
+                    ->visibility('public')
+                    ->nullable()
+                    ->maxSize(5120)
+                    ->imageEditor(false)
+
+                    ->getUploadedFileNameForStorageUsing(
+                        function (TemporaryUploadedFile $file): string {
+                            $name = pathinfo(
+                                $file->getClientOriginalName(),
+                                PATHINFO_FILENAME
+                            );
+                            $name = Str::slug($name);
+                            $extension = $file->getClientOriginalExtension();
+                            return time() . '-' . $name . '.' . $extension;
+                        }
+                    )
+                    ->getUploadedFileUsing(
+                            function ($file): ?array {
+
+                                if (! $file) {
+                                    return null;
+                                }
+
+                                return [
+                                    'name' => $file,
+
+                                    'size' => filesize(
+                                        storage_path('app/public/' . $file)
+                                    ),
+
+                                    'type' => mime_content_type(
+                                        storage_path('app/public/' . $file)
+                                    ),
+
+                                     'url' => url('/public/storage/' . $file),
+                                ];
+                            }
+                    ),
+
+                            
+                            TextInput::make('title')
+                                ->label('Project Title')
+                                ->required(),
+
+                            Textarea::make('description')
+                                ->rows(3)
+                                ->required(),
+                        ])
+                        ->collapsible()
+                        ->cloneable()
+                        ->reorderable()
+                        ->addActionLabel('Add Project')
+                        // ->columnSpanFull(),
+
+                ])
+                ->columnSpanFull()
+                ->visible(fn (Get $get): bool => $get('type') === 'course'),
+
+                // High-Growth Career Roles 
+                Section::make('Career Roles')
+                        ->schema([
+
+                            Repeater::make('career_roles')
+                                ->schema([
+                                    TextInput::make('icon')
+                                        ->label('Bootstrap Icon')
+                                        ->required()
+                                        ->placeholder('bi bi-cpu'),
+                                    TextInput::make('title')
+                                        ->required()
+                                        ->label('Role Name'),
+
+                                    TextInput::make('salary')
+                                        ->required()
+                                        ->label('Salary'),
+
+                                    TextInput::make('subtitle')
+                                        ->default('Average Global Salary')
+                                        ->label('Subtitle'),
+
+                                    // FileUpload::make('icon')
+                                    //     ->image()
+                                    //     ->disk('public')
+                                    //     ->visibility('public'),
+
+                                ])
+                                ->cloneable()
+                                ->collapsible()
+                                ->reorderable()
+                                ->addActionLabel('Add Career Role'),
+
+                        ])
+                        ->columnSpanFull()
+                        ->visible(fn (Get $get): bool => $get('type') === 'course'),
+
+                // Roadmap section 
+                Section::make('Interactive Roadmap')
+                    ->schema([
+
+                        Repeater::make('interactive_roadmap')
+                            ->schema([
+                                TextInput::make('icon')
+                                    ->label('Bootstrap Icon')
+                                    ->required()
+                                    ->placeholder('bi bi-cpu'),                                
+                                TextInput::make('title')
+                                    ->required(),
+
+                                Textarea::make('description')
+                                    ->required(),
+
+                            ])
+                            ->columnSpanFull()
+                            ->collapsible()
+                            ->cloneable()
+                            ->reorderable()
+                            ->addActionLabel('Add Roadmap Item'),
+
+                    ])
+                    ->columnSpanFull()
+                    ->visible(fn (Get $get): bool => $get('type') === 'course'),
+
+                    // industry project 
+                    Section::make('Industry Projects')
+                        ->schema([
+
+                            Repeater::make('industry_projects')
+                                ->schema([
+
+                                    // FileUpload::make('image')
+                                    //     ->image()
+                                    //     ->directory('industry-projects'),
+
+
+                                FileUpload::make('industry_projects_image')
+                                        ->image()
+                                        ->disk('public')
+                                        ->visibility('public')
+                                        ->nullable()
+                                        ->maxSize(5120)
+                                        ->imageEditor(false)
+
+                                        ->getUploadedFileNameForStorageUsing(
+                                            function (TemporaryUploadedFile $file): string {
+                                                $name = pathinfo(
+                                                    $file->getClientOriginalName(),
+                                                    PATHINFO_FILENAME
+                                                );
+                                                $name = Str::slug($name);
+                                                $extension = $file->getClientOriginalExtension();
+                                                return time() . '-' . $name . '.' . $extension;
+                                            }
+                                        )
+                                        ->getUploadedFileUsing(
+                                                function ($file): ?array {
+
+                                                    if (! $file) {
+                                                        return null;
+                                                    }
+
+                                                    return [
+                                                        'name' => $file,
+
+                                                        'size' => filesize(
+                                                            storage_path('app/public/' . $file)
+                                                        ),
+
+                                                        'type' => mime_content_type(
+                                                            storage_path('app/public/' . $file)
+                                                        ),
+
+                                                        'url' => url('/public/storage/' . $file),
+                                                    ];
+                                                }
+                                        ),
+
+                                    TextInput::make('title')
+                                        ->required(),
+
+                                    Textarea::make('description')
+                                        ->required(),
+
+                                    TagsInput::make('tags'),
+
+                                ])
+                                ->columnSpanFull()
+                                ->collapsible()
+                                ->cloneable()
+                                ->reorderable()
+                                ->addActionLabel('Add Industry Project'),
+
+                        ])
+                        ->columnSpanFull()
+                        ->visible(fn (Get $get): bool => $get('type') === 'course'),
+
+                            // curriculum hero section 
+                    Repeater::make('curriculum_hero')
+                                ->label('Curriculum Hero')
+                                ->maxItems(1)
+                                ->schema([
+
+                                    TextInput::make('title')
+                                        ->required(),
+
+                                    Textarea::make('description')
+                                        ->rows(4)
+                                        ->required(),
+
+                                    // FileUpload::make('image')
+                                    //     ->image()
+                                    //     ->disk('public')
+                                    //     ->directory('curriculum-hero'),
+
+                                  FileUpload::make('curriculum-hero_image')
+                        ->image()
+                        ->disk('public')
+                        ->visibility('public')
+                        ->nullable()
+                        ->maxSize(5120)
+                        ->imageEditor(false)
+
+                        ->getUploadedFileNameForStorageUsing(
+                            function (TemporaryUploadedFile $file): string {
+                                $name = pathinfo(
+                                    $file->getClientOriginalName(),
+                                    PATHINFO_FILENAME
+                                );
+                                $name = Str::slug($name);
+                                $extension = $file->getClientOriginalExtension();
+                                return time() . '-' . $name . '.' . $extension;
+                            }
+                        )
+                        ->getUploadedFileUsing(
+                                function ($file): ?array {
+
+                                    if (! $file) {
+                                        return null;
+                                    }
+
+                                    return [
+                                        'name' => $file,
+
+                                        'size' => filesize(
+                                            storage_path('app/public/' . $file)
+                                        ),
+
+                                        'type' => mime_content_type(
+                                            storage_path('app/public/' . $file)
+                                        ),
+
+                                        'url' => url('/public/storage/' . $file),
+                                    ];
+                                }
+                        ),  
+
+                                ])
+                                ->columnSpanFull()
+                                ->visible(fn (Get $get): bool => $get('type') === 'course'),
+                            
+                                                    
+        ]);
 
     }
 }

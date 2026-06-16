@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('meta_title', 'BitSabio - Courses')
+@section('meta_title', 'BitSabio - Training')
 
 @section('meta_description', 'Learn web development, AI technologies, design, and digital skills through practical courses and industry-focused training programs.')
 @section('meta_keywords', 'web development courses, AI courses, programming training, digital skills')
-@section('og_title', 'BitSabio Courses')
+@section('og_title', 'BitSabio Training')
 @section('og_description', 'Industry-ready courses and training programs.')
 
 @section('content')
@@ -30,104 +30,50 @@
                             <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
                                 Gain practical skills through industry-focused training, expert mentorship, and real-world projects. Build job-ready expertise and accelerate your career in today's fast-growing technology industry.                            </p>
 
-                            <!-- CTA Buttons -->
-                            <div class="d-flex flex-column flex-sm-row gap-3 mb-5 mt-5" data-aos="fade-up" data-aos-delay="200">
-                                <a href="#contact" class="btn btn-gradient">
-                                    Browse All Courses
-                                    <i class="bi bi-arrow-right ms-2"></i>
-                                </a>
-                                <a href="#work" class="btn btn-glass">Talk to a Mentor</a>
+                            <div class="row mt-4 mb-4">
+                                <div class="col-6">
+                                    <div class="feature-item">
+                                        <i class="bi bi-check-circle-fill text-primary"></i>
+                                        Live Projects
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="feature-item">
+                                        <i class="bi bi-check-circle-fill text-primary"></i>
+                                        Certification
+                                    </div>
+                                </div>
+
+                                <div class="col-6 mt-3">
+                                    <div class="feature-item">
+                                        <i class="bi bi-check-circle-fill text-primary"></i>
+                                        Placement Assistance
+                                    </div>
+                                </div>
+
+                                <div class="col-6 mt-3">
+                                    <div class="feature-item">
+                                        <i class="bi bi-check-circle-fill text-primary"></i>
+                                        Expert Mentors
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
                         <div class="col-lg-5">
-                            {{-- <div class="edu-home-img"> --}}
+                            <div class="edu-home-img">
                                 {{-- <img class="rounded-3" src="./images/data-science.jpg" alt="edu-home"> --}}
                                 @include('components.courseForm')
-                            {{-- </div> --}}
-                        </div>
-                    </div>
-                </div>
-                {{-- <div class="px-3">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7 ">
-                            <!-- Badge -->
-                            <div class="hero-badge" data-aos="fade-down">
-                                <i class="bi bi-stars" style="color: var(--gradient-blue);"></i>
-                                <span>LEARN BY BUILDING</span>
-                            </div>
-
-                            <!-- Title -->
-                            <h3 class="hero-title" data-aos="fade-up">
-                                Master Full Stack <span class="color-liner-004ED0">Development Through Real Projects</span>
-                            </h3>
-
-                            <!-- Subtitle -->
-                            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
-                                Build responsive websites, web applications, APIs, and enterprise-level projects using Laravel, React, Node.js, MySQL, MongoDB, Git, and modern development tools.
-                            </p>
-
-                            <!-- CTA Buttons -->
-                            <div class="d-flex flex-column flex-sm-row gap-3 mb-5 mt-5" data-aos="fade-up" data-aos-delay="200">
-                                <a href="#contact" class="btn btn-gradient">
-                                    Browse All Courses
-                                    <i class="bi bi-arrow-right ms-2"></i>
-                                </a>
-                                <a href="#work" class="btn btn-glass">Talk to a Mentor</a>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="edu-home-img">
-                                <img class="rounded-3" src="./images/slide2.jpg" alt="edu-home">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="px-3">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7 ">
-                            <!-- Badge -->
-                            <div class="hero-badge" data-aos="fade-down">
-                                <i class="bi bi-stars" style="color: var(--gradient-blue);"></i>
-                                <span>FUTURE SKILLS FOR THE AI ERA</span>
-                            </div>
-
-                            <!-- Title -->
-                            <h3 class="hero-title" data-aos="fade-up">
-                                Learn AI, Machine <span class="color-liner-004ED0">Learning, Cloud & Emerging Technologies</span>
-                            </h3>
-
-                            <!-- Subtitle -->
-                            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
-                                Get hands-on training in Artificial Intelligence, Machine Learning, AWS Cloud Computing, DevOps, and Data Science while working on industry-focused projects and case studies.
-                            </p>
-
-                            <!-- CTA Buttons -->
-                            <div class="d-flex flex-column flex-sm-row gap-3 mb-5 mt-5" data-aos="fade-up" data-aos-delay="200">
-                                <a href="#contact" class="btn btn-gradient">
-                                    Browse All Courses
-                                    <i class="bi bi-arrow-right ms-2"></i>
-                                </a>
-                                <a href="#work" class="btn btn-glass">Talk to a Mentor</a>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="edu-home-img">
-                                <img class="rounded-3" src="./images/slide3.jpg" alt="edu-home">
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
-
         </div>
-
     </section>
 
         <!-- ========== STATS ========== -->
-
     <div id="stats-section" class="info-lable">
         <div class="container">
             
@@ -173,7 +119,6 @@
     </div>
 
   <!-- Courses section -->
-
     <section class="py-5">
         <div class="container">
             <div class="mb-5">
@@ -553,7 +498,6 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
                   <img class="rounded"  src="./images/certificate.png" alt="certificate">
-
             </div>
         </div>
     </section>
