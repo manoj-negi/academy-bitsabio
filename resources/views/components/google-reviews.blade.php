@@ -52,9 +52,10 @@
                             </div>
 
                             <p class="review-text mb-0">
-                                The Full Stack Development training helped me build
-                                real-world projects and gain confidence in web development.
-                                The mentors were highly supportive throughout the journey.
+                                I joined with only basic coding knowledge and was nervous about building projects. The
+                                trainers guided me step by step, and by the end of the course I had completed several
+                                real-world applications. The practical learning approach helped me gain confidence in my
+                                development skills.
                             </p>
 
                         </div>
@@ -91,9 +92,10 @@
                             </div>
 
                             <p class="review-text mb-0">
-                                The Data Science program was extremely practical.
-                                Working on datasets and machine learning projects helped
-                                me understand concepts much better than theory alone.
+                                The best part of this training was working on real datasets instead of only learning
+                                theory. Every concept was explained with practical examples, which made it easier to
+                                understand. The projects helped me develop a strong foundation in data analysis and
+                                machine learning.
                             </p>
 
                         </div>
@@ -130,8 +132,9 @@
                             </div>
 
                             <p class="review-text mb-0">
-                                The AWS Cloud Computing training was practical and well-structured. Working on
-                                real-world cloud projects helped me strengthen my cloud computing and deployment skills.
+                                Before joining, cloud computing seemed difficult to understand. The hands-on labs and
+                                project work made everything much clearer. I learned how to work with AWS services and
+                                gained practical experience that I can confidently apply in real-world environments.
                             </p>
 
                         </div>
@@ -167,9 +170,9 @@
                             </div>
 
                             <p class="review-text mb-0">
-                                The DevOps Engineering training was practical and easy to follow. Working on CI/CD
-                                pipelines and cloud deployment projects helped me build strong DevOps skills and
-                                confidence.
+                                This course gave me a good understanding of modern DevOps practices. Working with Git,
+                                Docker, and CI/CD pipelines helped me learn how development and deployment processes
+                                work together. The practical sessions were extremely valuable throughout the training.
                             </p>
 
                         </div>
@@ -205,8 +208,9 @@
                             </div>
 
                             <p class="review-text mb-0">
-                                The Digital Marketing training was practical and engaging. Learning SEO, social media
-                                marketing, and real-world campaign strategies helped me develop strong marketing skills.
+                                I wanted a course that focused on practical marketing skills, and this training met my
+                                expectations. Learning SEO, content marketing, and social media strategies through real
+                                examples made the concepts easy to understand and apply confidently.
                             </p>
 
                         </div>
@@ -242,9 +246,9 @@
                             </div>
 
                             <p class="review-text mb-0">
-                                The Java Training program was well-structured and practical. The hands-on exercises and
-                                projects helped me strengthen my coding skills and gain confidence for technical
-                                interviews.
+                                The Java training was well organized and beginner-friendly. The coding exercises and
+                                project work helped me improve my programming skills significantly. I also gained more
+                                confidence in solving technical problems and preparing for interviews.
                             </p>
                         </div>
                     </div>
@@ -280,8 +284,9 @@
                             </div>
 
                             <p class="review-text mb-0">
-                                The Full Stack Web Development training was practical and well-structured. Building
-                                real-world projects helped me strengthen my frontend and backend development skills.
+                                Building complete web applications during the course was a great learning experience.
+                                The trainers explained both frontend and backend concepts clearly, and every module
+                                included practical assignments that helped reinforce the concepts effectively.
                             </p>
                         </div>
                     </div>
@@ -317,9 +322,9 @@
                             </div>
 
                             <p class="review-text mb-0">
-                                The IT Security & Ethical Hacking training was practical and informative. The hands-on
-                                labs helped me understand cybersecurity concepts and build confidence in security
-                                testing.
+                                The practical labs made this course stand out for me. Instead of only learning theory,
+                                we explored real security concepts through hands-on exercises. The training provided a
+                                solid understanding of cybersecurity fundamentals and ethical hacking techniques.
                             </p>
                         </div>
                     </div>
@@ -355,8 +360,10 @@
                             </div>
 
                             <p class="review-text mb-0">
-                                The Linux Administration training was practical and easy to follow. I learned system
-                                management, shell scripting, and server basics through hands-on exercises.
+                                I had very limited experience with Linux before enrolling in this course. The trainers
+                                explained every topic in a simple manner, and the hands-on exercises helped me
+                                understand server management, shell scripting, and administration tasks more
+                                effectively.
                             </p>
                         </div>
                     </div>
@@ -392,8 +399,9 @@
                             </div>
 
                             <p class="review-text mb-0">
-                                The AWS Cloud Computing training helped me understand cloud services, deployment, and
-                                infrastructure management through practical hands-on projects.
+                                The training sessions were interactive and focused heavily on practical implementation.
+                                Setting up and managing cloud resources helped me understand AWS services in a much
+                                better way. The projects added valuable real-world experience to the learning process.
                             </p>
                         </div>
                     </div>
@@ -429,9 +437,9 @@
                             </div>
 
                             <p class="review-text mb-0">
-                                The Microsoft Azure Cloud training gave me practical experience with cloud services,
-                                virtual machines, and deployment tools. The hands-on labs made learning easy and
-                                effective.
+                                This course helped me understand Azure services through practical examples and guided
+                                exercises. The labs were easy to follow and gave me confidence in working with cloud
+                                technologies. I found the overall learning experience very useful.
                             </p>
                         </div>
                     </div>
@@ -466,10 +474,11 @@
 
                             </div>
 
-                            <p class="review-text mb-0"> The UI/UX Design training gave me practical experience with
-                                user research, wireframing, and prototyping tools. The hands-on projects made learning
-                                easy and effective.
-                             </p>
+                            <p class="review-text mb-0">
+                                The course provided a great balance between theory and practical work. Creating
+                                wireframes, user flows, and prototypes helped me understand the complete design process.
+                                The feedback from mentors was helpful and improved my design thinking significantly.
+                            </p>
                         </div>
                     </div>
 
