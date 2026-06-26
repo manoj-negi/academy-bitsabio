@@ -484,8 +484,30 @@ function showGlobalModal(data) {
 
 }
 
+// pdf download js 
+document.addEventListener('DOMContentLoaded', function () {
 
+    const pdfModal = document.getElementById('downloadPdfModal');
 
+    if (!pdfModal) return;
 
+    pdfModal.addEventListener('show.bs.modal', function (event) {
 
- 
+        const button = event.relatedTarget;
+
+        const course = button.dataset.course;
+        const slug = button.dataset.slug;
+        const description = button.dataset.description;
+
+        document.getElementById('pdfModalTitle').innerText =
+            'Download ' + course + ' Brochure';
+
+        document.getElementById('pdfModalDescription').innerText =
+            description;
+
+        document.getElementById('pdfCourseSlug').value = slug;
+        document.getElementById('pdfCourseName').value = course;
+
+    });
+
+});
