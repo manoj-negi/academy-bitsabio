@@ -1751,9 +1751,11 @@ html {
 }
 
 .four-line-ellipsis {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;   
-  overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .blog-card-content {
@@ -2833,4 +2835,10 @@ html {
   position: relative;
   border-radius: 20px 0px 0px 20px;
 }
+.tool-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
  

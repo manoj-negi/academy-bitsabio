@@ -9,11 +9,7 @@
 {{-- open graph --}}
 @section('og_title', $course->tags['open_graph']['title'] ?? $course->title)
 
-@section('og_description', 
-    $course->tags['open_graph']['description'] 
-    ?? $course->tags['meta']['description'] 
-    ?? ''
-)
+@section('og_description', $course->tags['open_graph']['description'] ?? ($course->tags['meta']['description'] ?? ''))
 @section('og_type', $course->tags['open_graph']['type'] ?? 'article')
 @section('og_url', $course->tags['open_graph']['url'] ?? url()->current())
 
@@ -24,125 +20,88 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-7">
-                     <div class="hero-badge" data-aos="fade-down">
+                    <div class="hero-badge" data-aos="fade-down">
                         <i class="bi bi-stars" style="color: var(--gradient-blue);"></i>
                         <span>AI & MACHINE LEARNING TRAINING PROGRAM</span>
                     </div>
-                        <h1 data-aos="fade-up">{{ $course->hero_title_black }} <span class="color-liner-004ED0">{{$course->hero_title_blue}}</span> </h1>
-                        <p data-aos="fade-up" data-aos-delay="100">{{$course->hero_description}}</p>
-                <div class="row mt-4 mb-4">
-                    <div class="col-6">
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill text-primary"></i>
-                            Live Projects
+                    <h1 data-aos="fade-up">{{ $course->hero_title_black }} <span
+                            class="color-liner-004ED0">{{ $course->hero_title_blue }}</span> </h1>
+                    <p data-aos="fade-up" data-aos-delay="100">{{ $course->hero_description }}</p>
+                    <div class="row mt-4 mb-4">
+                        <div class="col-6">
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle-fill text-primary"></i>
+                                Live Projects
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-6">
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill text-primary"></i>
-                            Certification
+                        <div class="col-6">
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle-fill text-primary"></i>
+                                Certification
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-6 mt-3">
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill text-primary"></i>
-                            Placement Assistance
+                        <div class="col-6 mt-3">
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle-fill text-primary"></i>
+                                Placement Assistance
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-6 mt-3">
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill text-primary"></i>
-                            Expert Mentors
+                        <div class="col-6 mt-3">
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle-fill text-primary"></i>
+                                Expert Mentors
+                            </div>
                         </div>
                     </div>
-                </div>
                     <div class="d-flex align-items-center">
-                    <a href="" class="btn btn-gradient btn-lg me-3" data-aos="fade-up" data-aos-delay="200">
-                        Enroll Now
-                    </a>
-                   <a href="#work" class="btn btn-glass text-primary">Download Brochure <i class="bi bi-download text-primary"></i></a>
+                        <a href="" class="btn btn-gradient btn-lg me-3" data-aos="fade-up" data-aos-delay="200">
+                            Enroll Now
+                        </a>
+                        {{-- <a href="#work" class="btn btn-glass text-primary">Download PDF <i class="bi bi-download text-primary"></i></a> --}}
+                        <a type="button" class="btn btn-glass text-primary" data-bs-toggle="modal"
+                            data-bs-target="#downloadPdfModal">
+                            Download PDF
+                            <i class="bi bi-download text-primary"></i>
+                        </a>
                     </div>
 
                 </div>
                 <div class="col-md-5">
-                    <div class="">
-                         <img class="rounded-3" src="{{ url('/public/storage/' . $course->hero_image) }}" alt="{{ $course->title }}">                                                                                    
-                        
+                    <div class="contact-hero-img">
+                        <img class="rounded-3" src="{{ url('/public/storage/' . $course->hero_image) }}"
+                            alt="{{ $course->title }}">
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <section id="solutions" class="py-5 position-relative">
+    {{-- course content section  --}}
+    <section class="py-5">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                {{-- <div class="section-badge">
-                    <i class="bi bi-robot"></i>
-                    <span>WHAT YOU’LL GET</span>
-                </div> --}}
-                <h3 class="section-title gradient-text">Why Learn AI & ML?</h3>
-                <p class="section-subtitle">Learn practical skills, build real projects, and get guided support to grow from beginner to job-ready.</p>
-            </div>
+            <div class="row align-items-start">
 
-            <div class="row g-4 mb-4">
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="0">
-                    <div class="glass-card p-4 h-100">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-robot"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Learn by Building</h4>
-                        <p class="text-secondary small">Work on real projects instead of just theory.</p>
-                        <span class="badge bg-light text-primary">
-                        CAREER: AI ARCHITECT
-                        </span>
-                    </div>
+                <div class="col-lg-9">
+                    <h2 class="mb-4">
+                        Course Content
+                    </h2>
+
+                    {!! $course->content !!}
                 </div>
 
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="glass-card p-4 h-100">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-chat-square-text"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Real Project Experience</h4>
-                        <p class="text-secondary small">Build portfolio-ready apps used in real scenarios.</p>
-                        <span class="badge bg-light text-primary">
-                        CAREER: ML ENGINEER
-                        </span>
-                    </div>
+                <div class="col-lg-3">
+                    @include('components.courseForm')
                 </div>
 
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="glass-card p-4 h-100">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-bar-chart"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Career Guidance</h4>
-                        <p class="text-secondary small">Get direction on skills, roles, and growth path.</p>
-                        <span class="badge bg-light text-primary">
-                        CAREER: ML ENGINEER
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="glass-card p-4 h-100">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-diagram-3"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Interview & Resume Prep</h4>
-                        <p class="text-secondary small">Prepare with mock interviews and strong resumes.</p>
-                        <span class="badge bg-light text-primary">
-                        CAREER: ML ENGINEER
-                        </span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
+    {{-- <div class="blog-detail-content">
+    {!! $blog->content !!}
+    </div> --}}
 
     <!-- ========== STATS ========== -->
     <div id="stats-section" class="info-lable">
@@ -150,26 +109,26 @@
 
             <div class="row g-4">
 
-            <div class="col-md-4">
-                <div class="info-lable-box d-flex align-items-start bg-white border rounded-3 p-4 h-100 shadow-sm">
+                <div class="col-md-4">
+                    <div class="info-lable-box d-flex align-items-start bg-white border rounded-3 p-4 h-100 shadow-sm">
 
-                    <i class="bi bi-code-square text-primary fs-3"></i>
+                        <i class="bi bi-code-square text-primary fs-3"></i>
 
-                    <div class="ps-3">
-                        <p class="m-0 fw-semibold">
-                            100% Practical Training
-                        </p>
+                        <div class="ps-3">
+                            <p class="m-0 fw-semibold">
+                                100% Practical Training
+                            </p>
 
-                        <small class="text-muted">
-                            Focus on hands-on coding and implementation from day one.
-                        </small>
+                            <small class="text-muted">
+                                Focus on hands-on coding and implementation from day one.
+                            </small>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
 
                 <div class="col-md-4">
-                        <div class="info-lable-box d-flex align-items-start bg-white border rounded-3 p-4 h-100 shadow-sm">
+                    <div class="info-lable-box d-flex align-items-start bg-white border rounded-3 p-4 h-100 shadow-sm">
 
                         <i class="bi bi-rocket-takeoff text-primary"></i>
                         <div class="ps-3">
@@ -196,7 +155,7 @@
 
                 <div class="col-md-4">
                     <div class="info-lable-box d-flex align-items-start bg-white border rounded-3 p-4 h-100 shadow-sm">
-                    
+
                         <i class="bi bi-file-earmark-text text-primary"></i>
                         <div class="ps-3">
                             <p class="m-0 fw-semibold">Resume Building</p>
@@ -209,7 +168,7 @@
 
                 <div class="col-md-4">
                     <div class="info-lable-box d-flex align-items-start bg-white border rounded-3 p-4 h-100 shadow-sm">
-                    
+
                         <i class="bi bi-patch-check text-primary"></i>
                         <div class="ps-3">
                             <p class="m-0 fw-semibold">Global Certification</p>
@@ -221,7 +180,7 @@
                 </div>
 
                 <div class="col-md-4">
-                     <div class="info-lable-box d-flex align-items-start bg-white border rounded-3 p-4 h-100 shadow-sm">
+                    <div class="info-lable-box d-flex align-items-start bg-white border rounded-3 p-4 h-100 shadow-sm">
                         <i class="bi bi-person-workspace text-primary fs-3"></i>
                         <div class="ps-3">
                             <p class="m-0 fw-semibold">Placement Support</p>
@@ -246,100 +205,69 @@
                     Tools & Technologies You'll Master
                 </h3>
             </div>
-
             <div class="row g-4 justify-content-center">
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/excel.png') }}" alt="Excel">
-                        <h6>EXCEL</h6>
+                @foreach ($course->serviceIcons as $icon)
+                    <div class="col-lg-2 col-md-3 col-6">
+                        <div class="tool-card text-center">
+                            <img src="{{ asset('public/storage/' . $icon->image) }}"
+                                alt="{{ $icon->name }}"class="img-fluid mb-2 tool-icon">
+                            <h6>
+                                {{ strtoupper($icon->name) }}
+                            </h6>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ url('images/icons/aws (1).svg') }}" alt="SQL">
-                        <h6>SQL</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/python.png') }}" alt="Python">
-                        <h6>PYTHON</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/pandas.png') }}" alt="Pandas">
-                        <h6>PANDAS</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/numpy.png') }}" alt="NumPy">
-                        <h6>NUMPY</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/powerbi.png') }}" alt="Power BI">
-                        <h6>POWER BI</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/tableau.png') }}" alt="Tableau">
-                        <h6>TABLEAU</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/google-sheets.png') }}" alt="Google Sheets">
-                        <h6>GOOGLE SHEETS</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/mysql.png') }}" alt="MySQL">
-                        <h6>MYSQL</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/postgresql.png') }}" alt="PostgreSQL">
-                        <h6>POSTGRESQL</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/statistics.png') }}" alt="Statistics">
-                        <h6>STATISTICS</h6>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6">
-                    <div class="tool-card text-center">
-                        <img src="{{ asset('assets/images/tools/jupyter.png') }}" alt="Jupyter">
-                        <h6>JUPYTER</h6>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
-
         </div>
     </section>
 
     {{-- Curriculum Preview  --}}
-    <section class="page-hero" id="faq">
+    <section class="page-hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h3 class="text-center mb-3" data-aos="fade-up">
+                        Curriculum Preview
+                    </h3>
+                    <div class="container py-5">
+                        <div class="accordion custom-accordion" id="faqAccordion">
+                            @foreach (collect($course->curriculum_preview)->take(4) as $index => $module)
+                                <div class="accordion-item mb-3">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button {{ $index > 0 ? 'collapsed' : '' }}"
+                                            type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#faq{{ $index }}">
+                                            <div>
+                                                <small class="text-primary d-block">
+                                                    MODULE {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+                                                </small>
+                                                {{ $module['title'] ?? '' }}
+                                            </div>
+                                        </button>
+                                    </h3>
+                                    <div id="faq{{ $index }}"
+                                        class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}"
+                                        data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            {!! $module['description'] ?? '' !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="{{ route('course.curriculum', $course->slug) }}"
+                                class="fw-semibold text-primary text-decoration-none">
+                                View Detailed Curriculum →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- <section class="page-hero" id="faq">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -439,9 +367,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     {{-- Projects you will Build  --}}
-    <section class="py-5">
+    {{-- <section class="py-5">
         <div class="container">
 
             <h2 class="text-center mb-5">
@@ -531,6 +459,40 @@
             </div>
 
         </div>
+    </section> --}}
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">
+                Projects You Will Build
+            </h2>
+            <div class="row g-4">
+                @foreach ($course->projects_you_will_build ?? [] as $project)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="glass-card h-100 p-0 overflow-hidden">
+                            <img class="course-card-img w-100"
+                                src="{{ asset('public/storage/' . $project['Projects_image']) }}"
+                                alt="{{ $project['title'] }}">
+                            <div class="p-4">
+                                <h5>
+                                    {{ $project['title'] }}
+                                </h5>
+                                <p class="small text-muted">
+                                    {{ $project['description'] }}
+                                </p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    @foreach ($project['tags'] ?? [] as $tag)
+                                        <span class="blog-category">
+                                            {{ strtoupper($tag) }}
+                                        </span>
+                                    @endforeach
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </section>
 
     {{-- Your Success Path --}}
@@ -550,37 +512,44 @@
                 <div class="row justify-content-center text-center">
 
                     <div class="col-lg col-md-3 col-6 mb-4">
-                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3" style="width:70px;height:70px;">1</div>
+                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width:70px;height:70px;">1</div>
                         <h6 class="step-title">Choose Course</h6>
                     </div>
 
                     <div class="col-lg col-md-3 col-6 mb-4">
-                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3" style="width:70px;height:70px;">2</div>
+                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width:70px;height:70px;">2</div>
                         <h6 class="step-title">Attend Training</h6>
                     </div>
 
                     <div class="col-lg col-md-3 col-6 mb-4">
-                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3" style="width:70px;height:70px;">3</div>
+                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width:70px;height:70px;">3</div>
                         <h6 class="step-title">Complete Assignments</h6>
                     </div>
 
                     <div class="col-lg col-md-3 col-6 mb-4">
-                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3" style="width:70px;height:70px;">4</div>
+                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width:70px;height:70px;">4</div>
                         <h6 class="step-title">Build Real Projects</h6>
                     </div>
 
                     <div class="col-lg col-md-3 col-6 mb-4">
-                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3" style="width:70px;height:70px;">5</div>
+                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width:70px;height:70px;">5</div>
                         <h6 class="step-title">Get Mentorship</h6>
                     </div>
 
                     <div class="col-lg col-md-3 col-6 mb-4">
-                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3" style="width:70px;height:70px;">6</div>
+                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width:70px;height:70px;">6</div>
                         <h6 class="step-title">Interview Prep</h6>
                     </div>
 
                     <div class="col-lg col-md-3 col-6 mb-4">
-                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3" style="width:70px;height:70px;">7</div>
+                        <div class="bg-primary text-white rounded-circle shadow p-3 d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width:70px;height:70px;">7</div>
                         <h6 class="step-title">Launch Career</h6>
                     </div>
 
@@ -594,58 +563,31 @@
     {{-- High-Growth Career Roles --}}
     <section class="section-contact-options py-5">
         <div class="container">
-
             <h2 class="text-center fw-bold mb-5">
                 High-Growth Career Roles
             </h2>
-
             <div class="contact-options">
-
-                <!-- Card 1 -->
-                <div class="contact-option-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon-box">
-                        <i class="bi bi-cpu text-primary"></i>
+                @foreach ($course->career_roles ?? [] as $index => $role)
+                    <div class="contact-option-card" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
+                        <div class="icon-box">
+                            {{-- <i class="bi bi-cpu text-primary"></i> --}}
+                            <i class="{{ $role['icon'] ?? 'bi bi-cpu' }} text-primary"></i>
+                        </div>
+                        <h3>{{ $role['title'] }}</h3>
+                        <p class="mb-1">
+                            {{ $role['subtitle'] }}
+                        </p>
+                        <h4 class="text-primary">
+                            {{ $role['salary'] }}
+                        </h4>
                     </div>
-
-                    <h3>AI Engineer</h3>
-
-                    <p class="mb-1">Average Global Salary</p>
-
-                    <h4 class="text-primary">$145,000+</h4>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="contact-option-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon-box">
-                        <i class="bi bi-graph-up-arrow text-primary"></i>
-                    </div>
-
-                    <h3>ML Engineer</h3>
-
-                    <p class="mb-1">Average Global Salary</p>
-
-                    <h4 class="text-primary">$138,000+</h4>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="contact-option-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="icon-box">
-                        <i class="bi bi-clipboard-data text-primary"></i>
-                    </div>
-
-                    <h3>Data Scientist</h3>
-
-                    <p class="mb-1">Average Global Salary</p>
-
-                    <h4 class="text-primary">$122,000+</h4>
-                </div>
-
+                @endforeach
             </div>
         </div>
     </section>
-
     {{-- Google review form  --}}
     @include('components.google-reviews')
+    @include('components.download-pdf-modal')
 
     {{-- <Section class="py-5">
         <div class="container">
@@ -666,7 +608,7 @@
                                 <h5 class="mt-5"> Courses Offered</h5>
                                 
                             <ul>
-                                    @foreach($courses as $course)
+                                    @foreach ($courses as $course)
                                         <li>
                                             <a href="{{ url('/training/' . $course->slug) }}">
                                                 {{ $course->title }}

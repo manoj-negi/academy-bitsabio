@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
-
 class PostController extends Controller
 {
 //  blog list 
@@ -63,6 +62,15 @@ class PostController extends Controller
             'course',
             'courses'
         ));
+    }
+    public function curriculum($slug)
+    {
+        $course = Post::where('type', 'course')
+            ->where('slug', $slug)
+            ->where('status', 'published')
+            ->firstOrFail();
+
+        return view('curriculum', compact('course'));
     }
 
         // home course display 

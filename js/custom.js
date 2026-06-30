@@ -254,43 +254,6 @@ document.addEventListener('DOMContentLoaded', function () {
             pauseOnHover: false
         });
     }
-    /* =============================
-       FORM VALIDATION (ALL FORMS)
-    ============================= */
-    const forms = document.querySelectorAll('.needs-validation');
-
-    forms.forEach(form => {
-        form.addEventListener('submit', function (event) {
-
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            } else {
-                handleFormSubmit(form);
-            }
-
-            form.classList.add('was-validated');
-        });
-    });
-
-    /* =============================
-       FORM SUBMIT LOADER
-    ============================= */
-    function handleFormSubmit(form) {
-
-        const button = form.querySelector('#submitBtn');
-        const loader = form.querySelector('#btnLoader');
-        const text = form.querySelector('#btnText');
-
-        if (loader) loader.classList.remove('d-none');
-        if (text) text.innerText = "Sending...";
-        if (button) button.disabled = true;
-
-        // delay for UX (optional)
-        setTimeout(() => {
-            form.submit();
-        }, 1200);
-    }
 
     /* =============================
        RESET BUTTON ON LOAD
@@ -484,8 +447,30 @@ function showGlobalModal(data) {
 
 }
 
+// pdf download js 
+document.addEventListener('DOMContentLoaded', function () {
 
+    const pdfModal = document.getElementById('downloadPdfModal');
 
+    if (!pdfModal) return;
 
+    pdfModal.addEventListener('show.bs.modal', function (event) {
 
- 
+        const button = event.relatedTarget;
+
+        const course = button.dataset.course;
+        const slug = button.dataset.slug;
+        const description = button.dataset.description;
+
+        document.getElementById('pdfModalTitle').innerText =
+            'Download ' + course + ' Brochure';
+
+        document.getElementById('pdfModalDescription').innerText =
+            description;
+
+        document.getElementById('pdfCourseSlug').value = slug;
+        document.getElementById('pdfCourseName').value = course;
+
+    });
+
+});

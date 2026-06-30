@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('meta_title', 'BitSabio - Blogs')
 
-@section('meta_description', 'Read the latest articles, insights, tutorials, and industry trends on AI, web development, SEO, design, and digital growth.')
+@section('meta_description',
+    'Read the latest articles, insights, tutorials, and industry trends on AI, web development,
+    SEO, design, and digital growth.')
 @section('meta_keywords', 'AI blog, web development blog, SEO articles, technology insights')
 @section('og_title', 'BitSabio Blog')
 @section('og_description', 'Latest articles and insights from BitSabio.')
@@ -9,7 +11,7 @@
 @section('content')
 
     <!-- Page Hero -->
-   <section class="page-hero">
+    <section class="page-hero">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-7">
@@ -23,12 +25,17 @@
 
                     </p>
                     <div class="d-flex align-items-center">
-                        <a href="{{url('/contact')}}" class="btn btn-gradient btn-lg me-3" data-aos="fade-up" data-aos-delay="200">
-                        Book Free Consultation
-                    </a>
-                    <a href="{{url('/services')}}" class="btn btn-gray btn-lg" data-aos="fade-up" data-aos-delay="200">
-                        Explore Service
-                    </a>
+                        <a href="{{ route('contact') }}#contact" class="btn btn-gradient btn-lg me-3" data-aos="fade-up"
+                            data-aos-delay="200">
+                            Book Free Demo
+                        </a>
+                        {{-- <a href="{{ route('contact') }}#contact" class="btn btn-gradient btn-lg me-3">
+                            Book Free Demo
+                        </a> --}}
+                        <a href="{{ route('courses') }}" class="btn btn-gray btn-lg" data-aos="fade-up"
+                            data-aos-delay="200">
+                            View All Courses
+                        </a>
                     </div>
 
                 </div>
@@ -57,37 +64,38 @@
     </section>
 
     <!-- Blog Grid -->
-    
+
     <section class="py-5">
         <div class="container">
             <div class="blog-grid">
 
                 @forelse($blogs as $blog)
-                    <a href="{{ url('/blog/' . $blog->slug) }}" class="blog-card" data-category="{{ strtolower($blog->category) }}" data-aos="fade-up" data-aos-delay="100">
+                    <a href="{{ url('/blog/' . $blog->slug) }}" class="blog-card"
+                        data-category="{{ strtolower($blog->category) }}" data-aos="fade-up" data-aos-delay="100">
                         <!-- Image -->
-                        <div class="blog-card-image">  
-                            {{-- <img src="{{ url('/public/storage/' . $blog->image) }}" alt="{{ $blog->title }}">                                                                                     --}}
-                            <img src="{{ $blog->image_url }}" alt="{{ $blog->title }}">
+                        <div class="blog-card-image">
+                            <img src="{{ url('/public/storage/' . $blog->image) }}" alt="{{ $blog->title }}">
+                            {{-- <img src="{{ $blog->image_url }}" alt="{{ $blog->title }}"> --}}
 
-                            
+
                         </div>
 
                         <!-- Content -->
                         <div class="blog-card-content">
                             <span class="blog-category">{{ $blog->title }}</span>
-                            <h3>{{ $blog->short_description}}</h3>
+                            <h3>{{ $blog->short_description }}</h3>
 
                             <p>
-                                {{$blog->description}}
+                                {{ $blog->description }}
                             </p>
 
                             <div class="blog-meta">
                                 <span>By {{ $blog->author }}</span>
                                 <span>·</span>
                                 <span>
-                                   {{ $blog->created_at->format('M d, Y') }}
+                                    {{ $blog->created_at->format('M d, Y') }}
                                 </span>
-                                </div>
+                            </div>
 
                         </div>
                     </a>
@@ -102,7 +110,7 @@
         </div>
     </section>
 
-     <!-- Final CTA -->
+    <!-- Final CTA -->
     <section class="py-5">
         <div class="container">
             <div class="cta-banner-2">
@@ -110,26 +118,27 @@
                     <div class="col-md-6">
                         <div class="text-start me-md-4" data-aos="fade-up">
                             <h2>Stay Updated with Latest Tech Insights</h2>
-                            <p class="text-white mb-3">Get new articles, tutorials, and industry updates directly in your inbox. No noise, just precision.</p> 
+                            <p class="text-white mb-3">Get new articles, tutorials, and industry updates directly in your
+                                inbox. No noise, just precision.</p>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <form id="subscriberForm" data-url="{{ route('subscribe') }}">
 
-                        @csrf
-                        <div class="d-flex align-items-center">
-                            <input type="email" class="email-form-control me-3" name="email" placeholder="Enter your email" required >
-                            <button type="submit" class="btn btn-white" id="subscribeBtn">Subscribe</button>
-                        </div>
-                             {{-- MESSAGE --}}
-                        <div id="subscriberMessage" class="mt-3 text-white text-start"></div>
+                            @csrf
+                            <div class="d-flex align-items-center">
+                                <input type="email" class="email-form-control me-3" name="email"
+                                    placeholder="Enter your email" required>
+                                <button type="submit" class="btn btn-white" id="subscribeBtn">Subscribe</button>
+                            </div>
+                            {{-- MESSAGE --}}
+                            <div id="subscriberMessage" class="mt-3 text-white text-start"></div>
                         </form>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
     </section>
 
-  @endsection
-
+@endsection
