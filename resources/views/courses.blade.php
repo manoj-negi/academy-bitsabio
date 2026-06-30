@@ -10,10 +10,10 @@
 @section('content')
 
     <!-- ========== HERO SECTION ========== -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-slider">
-                <div class="px-3">
+   <section class="page-hero">
+    <div class="container">
+            {{-- <div class="hero-slider"> --}}
+                {{-- <div class="px-3"> --}}
                     <div class="row align-items-center">
                         <div class="col-lg-7">
                             <!-- Badge -->
@@ -71,8 +71,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                {{-- </div> --}}
+            {{-- </div> --}}
         </div>
     </section>
 

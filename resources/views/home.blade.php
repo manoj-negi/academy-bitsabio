@@ -434,7 +434,7 @@
                         you can confidently step into the tech industry and achieve long-term career success — all at
                         affordable pricing.</p>
                     <div class="mt-4" data-aos="fade-up" data-aos-delay="300">
-                        <a href="#contact" type ="submit"class="btn btn-gradient justify-content-center" id="submitBtn">
+                        <a href="#contact" class="btn btn-gradient justify-content-center" i>
                             Start Learning Now
                         </a>
                     </div>
@@ -442,6 +442,7 @@
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
                     <img class="rounded" src="./images/certificate.png" alt="certificate">
 
+                </div>
                 </div>
             </div>
     </section>

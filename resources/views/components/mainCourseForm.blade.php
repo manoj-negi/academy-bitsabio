@@ -36,7 +36,7 @@
                             <div class="cta-option" data-aos="fade-up" data-aos-delay="200">
                                 <i class="bi bi-telephone" style="color: var(--gradient-cyan);"></i>
                                 <div>
-                                    <div class="cta-option-title">CAll Us :</div>
+                                    <div class="cta-option-title">Call Us :</div>
                                     <div class="cta-option-text">+917717320084</div>
                                 </div>
 
@@ -76,7 +76,7 @@
 
                                 <div class="mb-3">
                                     <label class="form-label">Select Course</label>
-                                    <select name="course_name" class="form-select">
+                                    <select name="course_name" class="form-select" required>
                                         <option value="" disabled selected>Select Course</option>
                                         <option value="full_stack">Full Stack Web Developer</option>
                                         <option value="data_science">Data Science</option>
